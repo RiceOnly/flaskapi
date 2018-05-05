@@ -1,0 +1,18 @@
+pip install the requirements
+>>> pip install -r requirements.txt
+
+Before running it, Flask needs to be told how to import it, by setting the FLASK_APP environment variable:
+>>> set FLASK_APP=caredash.py
+
+Change the config file to match the database being used:
+EX. For MySQL, 'mysql://username:password@server/db'
+
+Create the database in the flask shell
+>>> flask shell
+>>> db.create_all()
+
+If user needs to debug, set this variable:
+>>> set FLASK_DEBUG=1
+
+Now you can run application in the root directory ../CareDash
+>>> flask run
