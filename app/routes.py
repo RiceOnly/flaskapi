@@ -71,8 +71,6 @@ def add_review_to_doctor(did):
     """
     if request.method == "POST":
         try:
-            # Check if doctor exist
-            Doctor.query.get(did)
             description = request.json['review']['description']
             review = Review(doctor_id=did, description=description)
 
@@ -84,8 +82,7 @@ def add_review_to_doctor(did):
             review_dict['did'] = review.doctor_id
             review_dict['description'] = review.description
 
-            # Try to return a success message instead
-            return jsonify(review_dict)
+            return jsonify({'Added Review': review_dict})
 
         except IntegrityError:
             return 'Error: Tried adding a review to a doctor that does not exist'
